@@ -20,11 +20,11 @@ services:
     networks:
       - service-net
 
-  # redis:
-  #   image: redis:6-alpine
-  #   command: redis-server
-  #   container_name: redis
-  #   ports:
-  #     - '6379:6379'
-  #   networks:
-  #     - service-net
+  redis:
+    image: redis:6-alpine
+    command: redis-server
+    container_name: redis
+    ports:
+      - '6379:6379'
+    networks:
+      - service-net
