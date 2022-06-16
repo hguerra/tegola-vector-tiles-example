@@ -1,0 +1,27 @@
+[webserver]
+port = ":8080"
+
+[cache]                     # configure a tile cache
+type = "file"               # a file cache will cache to the local file system
+basepath = "/home/heitor/projects/discoveries/vector_tiles/backend/.cache"    # where to write the file cache
+
+[[providers]]
+name = "brazilsforestcode"
+type = "gpkg"
+filepath = "/home/heitor/projects/discoveries/vector_tiles/backend/data/brazilsforestcode.gpkg"
+
+  [[providers.layers]]
+  name = "fcdd"
+  tablename = "fcdd"
+  id_fieldname = "fid"
+  fields = ["ID","Country","NatVeg00","NatVeg10","NatVeg20","NatVeg30","NatVeg40","NatVeg50","ForReg30","ForReg40","ForReg50","PltFor00","PltFor10","PltFor20","PltFor30","PltFor40","PltFor50","NonProdQ00","NonProdQ10","NonProdQ20","NonProdQ30","NonProdQ40","NonProdQ50","Agro00","Agro10","Agro20","Agro30","Agro40","Agro50","WetLnd00","WetLnd10","WetLnd20","WetLnd30","WetLnd40","WetLnd50","NotRel00","NotRel10","NotRel20","NotRel30","NotRel40","NotRel50"]
+
+[[maps]]
+name = "brazilsforestcode"
+center = [-49.01675, -15.35143, 11.0]
+
+  [[maps.layers]]
+  provider_layer = "brazilsforestcode.fcdd"
+  min_zoom = 1
+  max_zoom = 20
+

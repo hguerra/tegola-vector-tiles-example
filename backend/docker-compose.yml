@@ -1,0 +1,30 @@
+version: '3'
+
+networks:
+  service-net:
+    external: false
+
+services:
+  postgres:
+    image: postgis/postgis:14-3.2-alpine
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=docker
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+    ports:
+      - '5432:5432'
+    volumes:
+      - '.docker/postgres:/var/lib/postgresql/data'
+      - '.docker/shared:/volumes'
+    networks:
+      - service-net
+
+  # redis:
+  #   image: redis:6-alpine
+  #   command: redis-server
+  #   container_name: redis
+  #   ports:
+  #     - '6379:6379'
+  #   networks:
+  #     - service-net
