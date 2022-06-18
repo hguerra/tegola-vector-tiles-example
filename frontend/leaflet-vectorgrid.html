@@ -315,7 +315,7 @@
       );
 
       var tegolaTilesUrl =
-        'http://localhost:8080/maps/bonn/road/{z}/{x}/{y}.pbf';
+        'http://localhost:9000/maps/brazilsforestcode/fcdd/{z}/{x}/{y}.pbf';
 
       var  tegolaVectorTileOptions = {
         rendererFactory: L.canvas.tile,
@@ -329,7 +329,7 @@
         tegolaVectorTileOptions
       ).addTo(map);
 
-      map.setView({ lat: 50.7374, lng: 7.0982 }, 11);
+      map.setView({ lat: -15.35143, lng: -49.01675 }, 4);
 
       L.control
         .layers(

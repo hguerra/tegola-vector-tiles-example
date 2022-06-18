@@ -1,3 +1,10 @@
+install:
+	rm -f .bin/tegola .tmp/tegola
+	curl -L https://github.com/go-spatial/tegola/releases/download/v0.15.2/tegola_linux_amd64.zip -o .tmp/tegola.zip
+	unzip .tmp/tegola.zip -d .tmp/ && rm -f .tmp/tegola.zip
+	chmod +x .tmp/tegola
+	mv .tmp/tegola .bin/
+
 up:
 	docker-compose up -d
 

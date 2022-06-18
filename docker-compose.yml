@@ -1,0 +1,32 @@
+version: '3'
+
+networks:
+  service-net:
+    external: false
+
+services:
+  tegola:
+    image: gospatial/tegola:v0.15.2
+    command: serve --config /opt/tegola_config/config.toml
+    container_name: tegola
+    ports:
+      - '8080:8080'
+    volumes:
+      - './backend/conf/tegola/:/opt/tegola_config/'
+    networks:
+      - service-net
+
+  nginx:
+    image: nginx:1.22-alpine
+    container_name: nginx
+    ports:
+      - '9000:80'
+    volumes:
+      - './backend/conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro'
+      - './backend/conf/nginx/sites-available/:/etc/nginx/sites-available/'
+      - './backend/conf/nginx/sites-conf/:/etc/nginx/sites-conf/'
+      - './backend/conf/nginx/sites-enabled/:/etc/nginx/sites-enabled/'
+    networks:
+      - service-net
+    depends_on:
+      - tegola

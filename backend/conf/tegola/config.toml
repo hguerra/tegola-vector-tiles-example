@@ -3,12 +3,12 @@ port = ":8080"
 
 [cache]                     # configure a tile cache
 type = "file"               # a file cache will cache to the local file system
-basepath = "/home/heitor/projects/discoveries/vector_tiles/backend/.cache"    # where to write the file cache
+basepath = "/tmp/tegola"    # where to write the file cache
 
 [[providers]]
 name = "brazilsforestcode"
 type = "gpkg"
-filepath = "/home/heitor/projects/discoveries/vector_tiles/backend/conf/tegola/brazilsforestcode.gpkg"
+filepath = "/opt/tegola_config/brazilsforestcode.gpkg"
 
   [[providers.layers]]
   name = "fcdd"
